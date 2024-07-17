@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>APP NAME Coding Challenge by Morote</title>
+    <title>Rewind Coding Challenge by Morote</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,7 +36,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/index.html"><img class="nav-logo"
-                        src="/img/Morote_white_underline.svg">APPNAME</a>
+                        src="/img/Morote_white_underline.svg">Rewind</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -54,7 +54,7 @@
                             <a class="nav-link active" aria-current="page" href="/code.html">Code</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Repo</a>
+                            <a class="nav-link" href="https://github.com/Grazerquart/rewind/">Repo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://smorote.com">About</a>
@@ -72,16 +72,48 @@
                     <pre class="line-numbers">
                         <code class="language-javascript">
 function getValues(){
+    // Grab the user's input
     let messageInput = document.getElementById("message").value;
+    // Select the alertMessage div from the HTML
     let alertMessage = document.getElementById("alertMessage");
-    alertMessage.innerText = messageInput;
+    // Set the display message and then display it, calling the 
+    // rewind function in the process
+    let outputMessage = displayMessage(messageInput, rewind(messageInput));
+    alertMessage.innerHTML = outputMessage;
+
+}
+function rewind(string) {
+    // Function to rewind the string
+    let rewound = "";
+    for (let i = string.length - 1; i >= 0; i--) {
+        // Iterate backwards over the user's string 
+        rewound += string[i];
+        // Build out the reversed string one 
+        // character at a time
+    }
+    return rewound;
+    // Return the reversed string
+}
+function displayMessage(input, output) {
+    // Take the user's input and the 
+    // applet's output and display them
+    document.getElementById("alertMessage").style.opacity = 1;
+    // Make the alert box visible 
+    let message = `&lt;div&gt;Your message, &lt;i&gt;${input}&lt;/i&gt; reversed is &lt;i&gt;${output}&lt;/i&gt;&lt;/div&gt;`
+    // Build out the HTML to be displayed
+    return message;
+    // Give the HTML back to the original function
 }
                         </code>
                     </pre>
                 </div>
                 <div class="col-12 col-lg-4">
                     <h5>getValues</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque asperiores doloribus est corrupti dolor rem sint fuga voluptatum, temporibus, expedita aliquam placeat accusamus aperiam! Dolore animi esse cupiditate voluptas?</p>
+                    <p>Here we take in the user's input and use it in the other functions that we call from here.</p>
+                    <h5>Rewind</h5>
+                    <p>In this function, we take the user's string and treat it like an array. We start from the final element, and walk backwards across it pushing each item to a new array which is the new, reversed string.</p>
+                    <h5>displayMessage</h5>
+                    <p>We start here by making the previously transparent <i>alertMessage</i> div  visible to the user, then we build out the HTML to be displayed based on the user input and their reveresed string. Finally we return the constructed HTML back to the <i>getValues</i> function to be displayed.</p>
                 </div>
             </div>
         </div>
